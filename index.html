@@ -1,1 +1,38 @@
-Hello World!
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/javascript/semantic.min.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/css/semantic.min.css" />
+</head>
+
+<body>
+
+  <div ng-app="zway" ng-controller="system as sys">
+    <button class="ui blue labeled icon button" ng-click="sys.refresh()">
+      <i class="refresh icon"></i>
+      Refresh
+    </button>
+    <div class="ui one column grid">
+      <div class="column">
+        <div class="ui segment" ng-repeat="device in sys.devices track by device.id">
+          <div ng-switch="{{ device.genericType }}">
+            <z-switch ng-switch-when="16" device="device"></z-switch>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="js/zway.js"></script>
+<script src="js/switch.js"></script>
+
+</body>
+
+</html>
